@@ -15,7 +15,6 @@ import hudson.util.ListBoxModel;
 import jenkins.plugins.horreum.BaseExecutionContext;
 import jenkins.plugins.horreum.HorreumBaseDescriptor;
 import jenkins.plugins.horreum.HorreumBaseStep;
-import jenkins.plugins.horreum.HorreumGlobalConfig;
 
 public final class HorreumExpectStep extends HorreumBaseStep<HorreumExpectConfig> {
 
@@ -26,11 +25,6 @@ public final class HorreumExpectStep extends HorreumBaseStep<HorreumExpectConfig
 									 String expectedBy,
 									 String backlink) {
 		super(new HorreumExpectConfig(credentials, test, timeout, expectedBy, backlink));
-
-		//Populate step config from Global state
-		HorreumGlobalConfig globalConfig = HorreumGlobalConfig.get();
-		this.config.setKeycloakRealm(globalConfig.getKeycloakRealm());
-		this.config.setClientId(globalConfig.getClientId());
 	}
 
 	public String getTest() {

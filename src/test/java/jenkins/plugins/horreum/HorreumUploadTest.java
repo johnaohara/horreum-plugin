@@ -1,7 +1,5 @@
 package jenkins.plugins.horreum;
 
-import static io.hyperfoil.tools.HorreumTestClientExtension.dummyTest;
-import static io.hyperfoil.tools.HorreumTestClientExtension.horreumClient;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -12,15 +10,15 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
+import io.hyperfoil.tools.horreum.api.data.Access;
+import io.hyperfoil.tools.horreum.api.data.Schema;
+import io.hyperfoil.tools.horreum.api.services.RunService;
 import org.junit.jupiter.api.Test;
 import org.jvnet.hudson.test.CreateFileBuilder;
 
 import hudson.model.FreeStyleBuild;
 import hudson.model.FreeStyleProject;
 import hudson.tasks.Builder;
-import io.hyperfoil.tools.horreum.api.RunService;
-import io.hyperfoil.tools.horreum.entity.json.Access;
-import io.hyperfoil.tools.horreum.entity.json.Schema;
 import jenkins.plugins.horreum.upload.HorreumUpload;
 
 public class HorreumUploadTest extends HorreumPluginTestBase {

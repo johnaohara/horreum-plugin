@@ -27,7 +27,7 @@ THE SOFTWARE.
 	<parent>
 		<groupId>org.jenkins-ci.plugins</groupId>
 		<artifactId>plugin</artifactId>
-		<version>4.40</version>
+		<version>4.75</version>
 	</parent>
 
 	<groupId>io.jenkins.plugins</groupId>
@@ -61,13 +61,13 @@ THE SOFTWARE.
 		<scmTag>HEAD</scmTag>
 		<gitHubRepo>jenkinsci/horreum-plugin</gitHubRepo>
 
-		<jenkins.version>2.332.3</jenkins.version>
+		<jenkins.version>2.387.3</jenkins.version>
 		<forkCount>1C</forkCount>
-		<jackson.version>2.14.1</jackson.version>
+		<jackson.version>2.15.3</jackson.version>
 		<access-modifier.version>1.25</access-modifier.version>
 		<testcontainers.version>1.17.6</testcontainers.version>
 		<junit.jupiter.version>5.9.1</junit.jupiter.version>
-		<horreum.version>0.7</horreum.version>
+		<horreum.version>0.10.0</horreum.version>
 	</properties>
 
 	<repositories>
@@ -268,6 +268,10 @@ THE SOFTWARE.
 					<groupId>io.vertx</groupId>
 					<artifactId>vertx-core</artifactId>
 				</exclusion>
+				<exclusion>
+					<groupId>org.apache.httpcomponents</groupId>
+					<artifactId>httpclient</artifactId>
+				</exclusion>
 			</exclusions>
 		</dependency>
 
@@ -318,17 +322,19 @@ THE SOFTWARE.
 		<!-- Test framework -->
 		<dependency>
 			<groupId>io.hyperfoil.tools</groupId>
-			<artifactId>horreum-integration</artifactId>
+			<artifactId>horreum-integration-tests</artifactId>
 			<version>${horreum.version}</version>
 			<scope>test</scope>
 		</dependency>
+<!--
 		<dependency>
 			<groupId>io.hyperfoil.tools</groupId>
-			<artifactId>horreum-integration</artifactId>
+			<artifactId>horreum-integration-tests</artifactId>
 			<version>${horreum.version}</version>
 			<type>test-jar</type>
 			<scope>test</scope>
 		</dependency>
+-->
 
 		<dependency>
 			<groupId>org.jenkins-ci.plugins.workflow</groupId>

@@ -41,9 +41,6 @@ public class HorreumPluginTestBase {
 
 		HorreumGlobalConfig globalConfig = HorreumGlobalConfig.get();
 		if (globalConfig != null) {
-			globalConfig.setKeycloakRealm("horreum");
-			globalConfig.setClientId("horreum-ui");
-			globalConfig.setKeycloakBaseUrl(HorreumTestExtension.HORREUM_KEYCLOAK_BASE_URL);
 			globalConfig.setBaseUrl(HorreumTestExtension.HORREUM_BASE_URL);
 		} else {
 			System.out.println("Can not find Horreum Global Config");

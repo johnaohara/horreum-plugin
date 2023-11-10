@@ -5,14 +5,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
 import java.net.SocketException;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.List;
 
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.Response;
+import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.Response;
 
 import com.cloudbees.plugins.credentials.Credentials;
 import com.cloudbees.plugins.credentials.CredentialsMatchers;
@@ -26,13 +25,11 @@ import hudson.remoting.RemoteOutputStream;
 import hudson.security.ACL;
 import io.hyperfoil.tools.HorreumClient;
 import jenkins.model.Jenkins;
-import jenkins.plugins.horreum.auth.KeycloakAuthentication;
 import jenkins.security.MasterToSlaveCallable;
 
 public abstract class BaseExecutionContext<R> extends MasterToSlaveCallable<R, RuntimeException> {
    protected final String url;
    protected final String credentialsID;
-   protected final KeycloakAuthentication keycloak;
    protected final List<Long> retries;
    protected final OutputStream remoteLogger;
    protected final UsernamePasswordCredentials usernameCredentials;
@@ -42,7 +39,6 @@ public abstract class BaseExecutionContext<R> extends MasterToSlaveCallable<R, R
       this.url = url;
       this.credentialsID = credentials;
       HorreumGlobalConfig globalConfig = HorreumGlobalConfig.get();
-      keycloak = globalConfig.getAuthentication();
       retries = globalConfig.retries();
       this.remoteLogger = new RemoteOutputStream(new CloseProofOutputStream(logger));
       this.localLogger = logger;
@@ -69,11 +65,7 @@ public abstract class BaseExecutionContext<R> extends MasterToSlaveCallable<R, R
 
    protected PrintStream logger() {
       if (localLogger == null) {
-         try {
-            localLogger = new PrintStream(remoteLogger, true, StandardCharsets.UTF_8.name());
-         } catch (UnsupportedEncodingException e) {
-            throw new IllegalStateException(e);
-         }
+         localLogger = new PrintStream(remoteLogger, true, StandardCharsets.UTF_8);
       }
       return localLogger;
    }
@@ -94,7 +86,7 @@ public abstract class BaseExecutionContext<R> extends MasterToSlaveCallable<R, R
                   try {
                      entity = response.getEntity();
                      if (entity instanceof InputStream) {
-                        entity = toByteArrayOutputStream((InputStream) entity).toString(StandardCharsets.UTF_8.name());
+                        entity = toByteArrayOutputStream((InputStream) entity).toString(StandardCharsets.UTF_8);
                      }
                   } catch (Exception e2) {
                      // ignore e.g. IllegalStateException: RESTEASY003765: Response is closed.
@@ -143,9 +135,6 @@ public abstract class BaseExecutionContext<R> extends MasterToSlaveCallable<R, R
    protected HorreumClient createClient() {
       HorreumClient.Builder clientBuilder = new HorreumClient.Builder()
             .horreumUrl(url)
-            .keycloakUrl(keycloak.getBaseUrl())
-            .keycloakRealm(keycloak.getRealm())
-            .clientId(keycloak.getClientId())
             .horreumUser(usernameCredentials.getUsername())
             .horreumPassword(usernameCredentials.getPassword().getPlainText());
       return clientBuilder.build();

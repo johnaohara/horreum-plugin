@@ -33,17 +33,11 @@ public abstract class HorreumBaseDescriptor extends BuildStepDescriptor<Builder>
          return new StandardListBoxModel();
       }
 
-      List<ListBoxModel.Option> options = new ArrayList<>();
-
-      options.add(new ListBoxModel.Option(HorreumGlobalConfig.get().getAuthentication().getKeyName()));
-
-      AbstractIdCredentialsListBoxModel<StandardListBoxModel, StandardCredentials> items = new StandardListBoxModel()
-            .includeEmptyValue()
-            .includeAs(ACL.SYSTEM,
-                  project, StandardUsernamePasswordCredentials.class,
-                  URIRequirementBuilder.fromUri(url).build());
-      items.addMissing(options);
-      return items;
+      return new StandardListBoxModel()
+              .includeEmptyValue()
+              .includeAs(ACL.SYSTEM,
+                      project, StandardUsernamePasswordCredentials.class,
+                      URIRequirementBuilder.fromUri(url).build());
    }
 
    public ListBoxModel doFillCredentialsItems(@AncestorInPath Item item, @QueryParameter String credentials) {

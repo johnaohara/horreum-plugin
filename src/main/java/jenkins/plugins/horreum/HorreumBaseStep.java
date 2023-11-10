@@ -16,11 +16,6 @@ public abstract class HorreumBaseStep<C extends HorreumBaseConfig> extends Abstr
 
    protected HorreumBaseStep(C config) {
       this.config = config;
-
-      //Populate step config from Global state
-      HorreumGlobalConfig globalConfig = HorreumGlobalConfig.get();
-      this.config.setKeycloakRealm(globalConfig.getKeycloakRealm());
-      this.config.setClientId(globalConfig.getClientId());
    }
 
    public String getCredentials() {
