@@ -1,5 +1,7 @@
 package jenkins.plugins.horreum;
 
+import static jenkins.plugins.horreum.junit.HorreumTestClientExtension.dummyTest;
+import static jenkins.plugins.horreum.junit.HorreumTestClientExtension.horreumClient;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

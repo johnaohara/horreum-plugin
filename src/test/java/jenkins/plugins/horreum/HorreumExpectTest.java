@@ -1,18 +1,18 @@
 package jenkins.plugins.horreum;
 
-import static io.hyperfoil.tools.HorreumTestClientExtension.dummyTest;
-import static io.hyperfoil.tools.HorreumTestClientExtension.horreumClient;
+import static jenkins.plugins.horreum.junit.HorreumTestClientExtension.dummyTest;
+import static jenkins.plugins.horreum.junit.HorreumTestClientExtension.horreumClient;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+import io.hyperfoil.tools.horreum.api.alerting.RunExpectation;
 import org.junit.jupiter.api.Test;
 
 import hudson.model.FreeStyleBuild;
 import hudson.model.FreeStyleProject;
-import io.hyperfoil.tools.horreum.entity.alerting.RunExpectation;
 import jenkins.plugins.horreum.expect.HorreumExpect;
 
 public class HorreumExpectTest extends HorreumPluginTestBase {

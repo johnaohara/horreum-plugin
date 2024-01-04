@@ -65,9 +65,9 @@ THE SOFTWARE.
 		<forkCount>1C</forkCount>
 		<jackson.version>2.15.3</jackson.version>
 		<access-modifier.version>1.25</access-modifier.version>
-		<testcontainers.version>1.17.6</testcontainers.version>
+		<testcontainers.version>1.19.0</testcontainers.version>
 		<junit.jupiter.version>5.9.1</junit.jupiter.version>
-		<horreum.version>0.10.0</horreum.version>
+		<horreum.version>0.11-SNAPSHOT</horreum.version>
 	</properties>
 
 	<repositories>
@@ -233,45 +233,47 @@ THE SOFTWARE.
 			<!-- Quarkus 2.8.2 seems to have mixed dependencies -->
 			<exclusions>
 				<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-api</artifactId>
-				</exclusion>
-				<exclusion>
 					<groupId>org.jboss.logging</groupId>
 					<artifactId>jboss-logging</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.fasterxml.jackson.core</groupId>
-					<artifactId>jackson-core</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.fasterxml.jackson.core</groupId>
-					<artifactId>jackson-databind</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>io.smallrye.config</groupId>
-					<artifactId>smallrye-config</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>io.smallrye.common</groupId>
-					<artifactId>smallrye-common-annotation</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.eclipse.microprofile.config</groupId>
-					<artifactId>microprofile-config-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.eclipse.microprofile.context-propagation</groupId>
-					<artifactId>microprofile-context-propagation-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>io.vertx</groupId>
-					<artifactId>vertx-core</artifactId>
 				</exclusion>
 				<exclusion>
 					<groupId>org.apache.httpcomponents</groupId>
 					<artifactId>httpclient</artifactId>
 				</exclusion>
+				<!--
+                                <exclusion>
+                                    <groupId>org.slf4j</groupId>
+                                    <artifactId>slf4j-api</artifactId>
+                                </exclusion>
+                                <exclusion>
+                                    <groupId>com.fasterxml.jackson.core</groupId>
+                                    <artifactId>jackson-core</artifactId>
+                                </exclusion>
+                                <exclusion>
+                                    <groupId>com.fasterxml.jackson.core</groupId>
+                                    <artifactId>jackson-databind</artifactId>
+                                </exclusion>
+                                <exclusion>
+                                    <groupId>io.smallrye.config</groupId>
+                                    <artifactId>smallrye-config</artifactId>
+                                </exclusion>
+                                <exclusion>
+                                    <groupId>io.smallrye.common</groupId>
+                                    <artifactId>smallrye-common-annotation</artifactId>
+                                </exclusion>
+                                <exclusion>
+                                    <groupId>org.eclipse.microprofile.config</groupId>
+                                    <artifactId>microprofile-config-api</artifactId>
+                                </exclusion>
+                                <exclusion>
+                                    <groupId>org.eclipse.microprofile.context-propagation</groupId>
+                                    <artifactId>microprofile-context-propagation-api</artifactId>
+                                </exclusion>
+                                <exclusion>
+                                    <groupId>io.vertx</groupId>
+                                    <artifactId>vertx-core</artifactId>
+                                </exclusion>
+                -->
 			</exclusions>
 		</dependency>
 
@@ -319,20 +321,57 @@ THE SOFTWARE.
 			<optional>true</optional>
 		</dependency>
 
-		<!-- Test framework -->
+		<!-- Test framework dependencies -->
 		<dependency>
 			<groupId>io.hyperfoil.tools</groupId>
 			<artifactId>horreum-integration-tests</artifactId>
 			<version>${horreum.version}</version>
 			<scope>test</scope>
 		</dependency>
-<!--
 		<dependency>
 			<groupId>io.hyperfoil.tools</groupId>
-			<artifactId>horreum-integration-tests</artifactId>
+			<artifactId>horreum-infra-common</artifactId>
 			<version>${horreum.version}</version>
-			<type>test-jar</type>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.hyperfoil.tools</groupId>
+			<artifactId>horreum-infra-common</artifactId>
+			<version>${horreum.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.hyperfoil.tools</groupId>
+			<artifactId>horreum-backend</artifactId>
+			<version>${horreum.version}</version>
+			<scope>test</scope>
+		</dependency>
+<!--
+		<dependency>
+			<groupId>io.smallrye.config</groupId>
+			<artifactId>smallrye-config-core</artifactId>
+			<version>3.4.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>testcontainers</artifactId>
+			<scope>test</scope>
+		</dependency>
+-->
+<!--
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>4.0.4</version>
+			<scope>test</scope>
+		</dependency>
+-->
+<!--
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>6.0.0</version>
 		</dependency>
 -->
 

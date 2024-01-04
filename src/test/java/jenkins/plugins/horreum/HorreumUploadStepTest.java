@@ -1,19 +1,21 @@
 package jenkins.plugins.horreum;
 
-import static io.hyperfoil.tools.HorreumTestClientExtension.dummyTest;
-import static io.hyperfoil.tools.HorreumTestClientExtension.horreumClient;
-import static org.junit.jupiter.api.Assertions.*;
+import static jenkins.plugins.horreum.junit.HorreumTestClientExtension.dummyTest;
+import static jenkins.plugins.horreum.junit.HorreumTestClientExtension.horreumClient;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.net.URL;
 import java.util.Map;
 
 import hudson.FilePath;
+import io.hyperfoil.tools.horreum.api.services.RunService;
 import org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition;
 import org.jenkinsci.plugins.workflow.job.WorkflowJob;
 import org.jenkinsci.plugins.workflow.job.WorkflowRun;
 import org.junit.jupiter.api.Test;
 
-import io.hyperfoil.tools.horreum.api.RunService;
 
 public class HorreumUploadStepTest extends HorreumPluginTestBase {
    @Test

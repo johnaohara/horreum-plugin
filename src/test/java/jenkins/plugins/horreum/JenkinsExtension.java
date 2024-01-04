@@ -22,10 +22,10 @@ public class JenkinsExtension extends org.jvnet.hudson.test.JenkinsRule implemen
       }
    }
 
-   @Override
-   public void afterEach(ExtensionContext context) throws Exception {
-      after();
-   }
+    @Override
+    public void afterEach(ExtensionContext context) throws Exception {
+        after();
+    }
 
    @Override
    public void recipe() throws Exception {
