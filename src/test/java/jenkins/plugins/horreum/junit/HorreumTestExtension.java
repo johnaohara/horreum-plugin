@@ -84,7 +84,7 @@ public class HorreumTestExtension implements BeforeAllCallback, ExtensionContext
 
 //         TODO:: start Horreum container
 
-            horreumContainer = new GenericContainer<>("quay.io/hyperfoil/horreum:0.10.6").withExposedPorts(8080);
+            horreumContainer = new GenericContainer<>("quay.io/hyperfoil/horreum:0.10.7").withExposedPorts(8080);
             horreumContainer.addEnv("KC_HTTPS_CERTIFICATE_FILE", "/tmp/keycloak-tls.crt");
             horreumContainer.addEnv("QUARKUS_DATASOURCE_JDBC_URL", infraEnv.get("quarkus.datasource.jdbc.url").replaceAll("localhost", "172.17.0.1"));
             horreumContainer.addEnv("QUARKUS_DATASOURCE_MIGRATION_JDBC_URL", infraEnv.get("quarkus.datasource.migration.jdbc.url").replaceAll("localhost", "172.17.0.1"));
