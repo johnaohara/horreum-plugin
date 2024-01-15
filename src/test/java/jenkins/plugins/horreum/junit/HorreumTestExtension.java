@@ -84,7 +84,7 @@ public class HorreumTestExtension implements BeforeAllCallback, ExtensionContext
 
 //         TODO:: start Horreum container
 
-            horreumContainer = new GenericContainer<>("quay.io/hyperfoil/horreum:0.10.7").withExposedPorts(8080);
+            horreumContainer = new GenericContainer<>("quay.io/hyperfoil/horreum:0cc5268e3bbf4dec64c715eac0d11178a7d45168").withExposedPorts(8080);
             horreumContainer.addEnv("KC_HTTPS_CERTIFICATE_FILE", "/tmp/keycloak-tls.crt");
             horreumContainer.addEnv("QUARKUS_DATASOURCE_JDBC_URL", infraEnv.get("quarkus.datasource.jdbc.url").replaceAll("localhost", "172.17.0.1"));
             horreumContainer.addEnv("QUARKUS_DATASOURCE_MIGRATION_JDBC_URL", infraEnv.get("quarkus.datasource.migration.jdbc.url").replaceAll("localhost", "172.17.0.1"));
@@ -92,6 +92,8 @@ public class HorreumTestExtension implements BeforeAllCallback, ExtensionContext
             horreumContainer.addEnv("QUARKUS_HTTP_HTTP2", "false");
 //            horreumContainer.addEnv("HORREUM_URL", "${HORREUM_HORREUM_URL}");
             horreumContainer.addEnv("QUARKUS_DATASOURCE_MIGRATION_PASSWORD", infraEnv.get("horreum.db.password"));
+            horreumContainer.addEnv("QUARKUS_DATASOURCE_JDBC_ADDITIONAL_JDBC_PROPERTIES_SSL", "false");
+            horreumContainer.addEnv("QUARKUS_DATASOURCE_JDBC_ADDITIONAL_JDBC_PROPERTIES_SSLMODE", "disable");
             horreumContainer.addEnv("QUARKUS_DATASOURCE_PASSWORD", infraEnv.get("horreum.db.password"));
             horreumContainer.addEnv("QUARKUS_OIDC_AUTH_SERVER_URL", infraEnv.get("quarkus.oidc.auth-server-url").replaceAll("localhost", "172.17.0.1"));
             horreumContainer.addEnv("HORREUM_KEYCLOAK_URL", infraEnv.get("keycloak.host").replaceAll("localhost", "172.17.0.1"));

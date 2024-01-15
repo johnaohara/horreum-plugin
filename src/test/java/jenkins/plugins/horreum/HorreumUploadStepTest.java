@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.net.URL;
 import java.util.Map;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import hudson.FilePath;
 import io.hyperfoil.tools.horreum.api.services.RunService;
 import org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition;
@@ -77,10 +78,10 @@ public class HorreumUploadStepTest extends HorreumPluginTestBase {
       assertEquals(1, summary.runs.size());
       Object runObject = horreumClient.runService.getRun(summary.runs.get(0).id,summary.runs.get(0).token);
       assertNotNull(runObject);
-      assertTrue(runObject instanceof Map,"run should return a map");
-      Object data = ((Map)runObject).get("data");
+      assertTrue(runObject instanceof RunService.RunExtended,"run should return a map");
+      Object data = ((RunService.RunExtended)runObject).data;
       assertNotNull(data);
-      assertTrue(data instanceof Map,"data should be a map");
-      assertEquals(2,((Map<?, ?>) data).size(),"data should have an entry for each file");
+      assertTrue(data instanceof ObjectNode,"data should be a ObjectNode");
+      assertEquals(2,((ObjectNode) data).size(),"data should have an entry for each file");
    }
 }

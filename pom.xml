@@ -36,7 +36,7 @@ THE SOFTWARE.
 	<packaging>hpi</packaging>
 	<name>Horreum Plugin</name>
 	<description>
-		This plugin 
+		The Horreum plugin allows users to publish test results to Horreum (http://horreum.io)
 	</description>
 	<url>https://github.com/jenkinsci/horreum-plugin</url>
 
@@ -56,18 +56,18 @@ THE SOFTWARE.
 	</scm>
 
 	<properties>
-		<revision>0.1.5</revision>
+		<revision>0.1.6</revision>
 		<changelist>-SNAPSHOT</changelist>
 		<scmTag>HEAD</scmTag>
 		<gitHubRepo>jenkinsci/horreum-plugin</gitHubRepo>
 
-		<jenkins.version>2.387.3</jenkins.version>
+		<jenkins.version>2.401.3</jenkins.version>
 		<forkCount>1C</forkCount>
 		<jackson.version>2.15.3</jackson.version>
 		<access-modifier.version>1.25</access-modifier.version>
 		<testcontainers.version>1.19.0</testcontainers.version>
 		<junit.jupiter.version>5.9.1</junit.jupiter.version>
-		<horreum.version>0.10.7</horreum.version>
+		<horreum.version>0.12-SNAPSHOT</horreum.version>
 	</properties>
 
 	<repositories>
